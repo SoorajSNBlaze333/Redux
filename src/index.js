@@ -14,7 +14,7 @@ export const addArticle = article => ({
 })
 //
 const initialState = {
-  articles: []
+  articles:[]
 };
 //
 const rootReducer = (state = initialState, action) => {
