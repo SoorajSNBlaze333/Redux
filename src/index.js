@@ -6,21 +6,21 @@ import { Form } from './Form';
 import { List } from './List';
 import { Row, Col } from 'antd';
 //
-const ADD_COUNTER = "ADD_COUNTER";
+const ADD_ARTICLE = "ADD_ARTICLE";
 //
-export const addCounter = counter => ({
-  type: ADD_COUNTER,
-  payload: counter
+export const addArticle = article => ({
+  type: ADD_ARTICLE,
+  payload: article
 })
 //
 const initialState = {
-  counter: 0
+  articles: []
 };
 //
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_COUNTER:
-      return Object.assign({},state,{counter:state.counter.concat(action.payload)});
+    case ADD_ARTICLE:
+      return Object.assign({},state,{articles:state.articles.concat(action.payload)});
     default:
       return state;
   }
@@ -28,15 +28,15 @@ const rootReducer = (state = initialState, action) => {
 //
 const store = createStore(rootReducer);
 window.store = store;
-window.addCounter = addCounter;
-store.subscribe(()=>console.log(store))
+window.addArticle = addArticle;
+store.subscribe(()=>console.log("Article Added!!"))
 //
 class App extends React.Component {
   render() {
     return (
       <Row>
-        <Col span={12}><List/></Col>
-        <Col span={12}><Form /></Col>
+        <Col span={12}><div>Articles</div><List/></Col>
+        <Col span={12}><div>Add New Article</div><Form /></Col>
       </Row>
     )
   }
